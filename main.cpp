@@ -66,6 +66,18 @@ int main(int argc, char** args)
     std::cout << "Sum value: " << std::to_string(std::get<2>(ex2Tuple)) << "\n";
     std::cout << "Average value: " << std::to_string(std::get<3>(ex2Tuple)) << "\n";
     
+    /*c) Consider the container S = {1,2,-3,4,5,5,5,6}. Use an STL algorithm to find the first occurrence of the value.*/
+    std::vector<int> v2{1,2,-3,4,5,5,5,6};
+    int exampleValue = -3;
+    std::vector<int>::iterator result = std::find(v2.begin(), v2.end(), exampleValue);
+    if(result != v2.end())
+    {
+        std::cout << "Value: " << std::to_string(*result) << " found.\n";
+    }
+    else
+    {
+        std::cout << "Value: " << std::to_string(exampleValue) << " not found.\n";
+    }
     
     return 0;
 }
