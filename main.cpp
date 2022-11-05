@@ -8,6 +8,7 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <functional>
 #include <iostream>
 #include <numeric>
 #include <set>
@@ -79,6 +80,27 @@ int main(int argc, char** args)
         std::cout << "Value: " << std::to_string(exampleValue) << " not found.\n";
     }
     
+
+
+
+    /* 2. Now use the following functions:
+     std::bind2nd() - removed in c++ 17
+     std::bind()
+     Lambda expression
+     to find the position of the first even number in S.*/
+
+    auto modulo2 = std::bind(std::modulus(), std::placeholders::_1, 2);
+    auto firstEvenNumberPos = std::find_if(v2.begin(), v2.end(), [&modulo2](int number){ return (modulo2(number) == 0); });
+    if(firstEvenNumberPos != v2.end())
+    {
+        std::cout << "First even value: " << std::to_string(*firstEvenNumberPos) << " found.\n";
+    }
+    else
+    {
+        std::cout << "No even value found.\n";
+    }
+
+
     return 0;
 }
 
