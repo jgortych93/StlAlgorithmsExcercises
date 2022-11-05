@@ -130,6 +130,19 @@ int main(int argc, char** args)
         std::cout << "The position of the first element of the last subrange matching {3,4,5} found at position: " << std::to_string(std::distance(ex2d.begin(), pos3)) << "\n";
     }
 
+
+
+
+    /*2e) Consider the container S = {1,2,5,5,-3,4,5,5,5,6,3,4,5}. Find the first element in S that has a value equal to
+     the value of the following element.*/
+    std::vector<int> ex2e{1,2,5,5,-3,4,5,5,5,6,3,4,5};
+
+    auto pos4 = std::adjacent_find(ex2e.begin(), ex2e.end());
+    if(pos4 != ex2e.end())
+    {
+        std::cout << "The first element in container that has a value equal to the value of the following element found at position: " << std::to_string(std::distance(ex2e.begin(), pos4)) << "\n";
+    }
+
     return 0;
 }
 
