@@ -101,6 +101,35 @@ int main(int argc, char** args)
     }
 
 
+
+
+    /*2d) Consider the container S = {1,2,5,5,-3,4,5,5,5,6,3,4,5}.
+     Determine how to do the following:
+      Return the position of the first three consecutive elements having the value 5.
+      Return the position of the first element of the first subrange matching {3,4,5}.
+      Return the position of the first element of the last subrange matching {3,4,5}.*/
+    std::vector<int> ex2d{1,2,5,5,-3,4,5,5,5,6,3,4,5,3,4,5};
+
+    auto pos = std::search_n(ex2d.begin(), ex2d.end(), 3, 5);
+    if(pos != ex2d.end())
+    {
+        std::cout << "Three conscutive 5 elements found on position: " << std::to_string(std::distance(ex2d.begin(), pos)) << "\n";
+    }
+
+    std::vector<int> firstSubrange{3,4,5};
+    auto pos2 = std::search(ex2d.begin(), ex2d.end(), firstSubrange.begin(), firstSubrange.end());
+    if(pos2 != ex2d.end())
+    {
+        std::cout << "The position of the first element of the first subrange matching {3,4,5} found at position: " << std::to_string(std::distance(ex2d.begin(), pos2)) << "\n";
+    }
+
+    std::vector<int> lastSubrange{3,4,5};
+    auto pos3 = std::find_end(ex2d.begin(), ex2d.end(), lastSubrange.begin(), lastSubrange.end());
+    if(pos3 != ex2d.end())
+    {
+        std::cout << "The position of the first element of the last subrange matching {3,4,5} found at position: " << std::to_string(std::distance(ex2d.begin(), pos3)) << "\n";
+    }
+
     return 0;
 }
 
