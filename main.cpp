@@ -143,6 +143,22 @@ int main(int argc, char** args)
         std::cout << "The first element in container that has a value equal to the value of the following element found at position: " << std::to_string(std::distance(ex2e.begin(), pos4)) << "\n";
     }
 
+
+
+
+    /*2f) Consider the container S = {1,2,5,5,-3,4,5,5,5,6,3,4,5} and S1 = {1,2,5}. Determine whether the elements in
+     S1 are equal to the elements in S.*/
+    std::vector<int> ex2f{1,2,5,5,-3,4,5,5,5,6,3,4,5};
+    std::vector<int> S1{1,2,5};
+
+    auto posPairs = std::mismatch(ex2f.begin(), ex2f.end(), S1.begin(), S1.end());
+    if(posPairs.second == S1.end())
+    {
+        std::cout << "Elemnts in two given vectors are equal. \n";
+    }
+
+
+
     return 0;
 }
 
