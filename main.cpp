@@ -157,7 +157,22 @@ int main(int argc, char** args)
         std::cout << "Elemnts in two given vectors are equal. \n";
     }
 
+    /*3. (Which Style to use?)
+     Some STL algorithms use unary and binary predicates. Both predicate types return a bool. A unary predicate
+     has one input argument while a binary predicate has two input arguments. We can model these predicates and
+     other kinds of functions in a number of ways:
+      User-defined function objects.
+      Predefined STL function objects (for example, std::multiplies<T>()).
+      Using lambda functions (possibly with captured variables).
+     Answer the following questions:
+     a) Compare these three solutions with regard to quality issues such as readability, understandability and
+     maintainability.*/
 
+    /*Answer:
+        User defined function objects are the objects that have overloaded () operator. That often makes it the worst in terms of understandability as it's need to be clear what the function do (so for example proper naming is important).
+        Predefined STL functions are often easiest to use as the set of ready standard functions that does not need to be implemented and maintained by the users but of corse they are less changeable. As well named and documented functions they are most understandable.
+        While creating some in-place function escpecially the one that should be used in some STL algortihm the good choice is to create anonymous lambda function (in-place as algorithm's param or assinged to auto variable) but using such function in place may decrease the general readability.
+     */
 
     return 0;
 }
