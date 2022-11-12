@@ -230,7 +230,21 @@ int main(int argc, char** args)
     Lambda required much less work that user defined func. object but more than a STL defined functor. It is good to use where there is no STL functor available.
      */
 
+    /*4. (Lists versus Vectors)
+    Lists and vectors are similar in structure but it is important to know the context in which to use each one.
+    Determine whether it is better to use a list, vector or deque in the following cases:
+    a) Iterating in a container from the beginning to the end and calculating the average of all its elements.
+    The winner is vector as it placed in contiguous memory which makes iterating through it the fastest as there is no need to dereference any pointers and switching to another place in memory.
 
+    b) Moving to a given (integral) position in the container.
+    Vector again by the same reasons as in question a. It is also programatically easy as it is able to use [] random access operator.
+
+    c) Appending and removing elements at the beginning and end of the container.
+    In most cases dequeue as it is partially placed in contiguous memory which makes it faster than list.
+
+    d) Finding the position in the container corresponding to an element with a given value.
+    This is the same case as in question a.*/
+    
     return 0;
 }
 
