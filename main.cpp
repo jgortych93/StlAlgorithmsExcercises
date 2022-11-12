@@ -223,6 +223,13 @@ int main(int argc, char** args)
         }
     }
 
+    /*3c) Having developed and debugged the code in part b) review the three solutions from the perspective of
+    understandability, maintainability and efficiency.
+    As mentioned before user defined function object required most source code and proper naming.
+    The easiest to use was STL standard functor std::greater but it required using the std::bind function as unary predicate has to be used in copy_if function).
+    Lambda required much less work that user defined func. object but more than a STL defined functor. It is good to use where there is no STL functor available.
+     */
+
 
     return 0;
 }
