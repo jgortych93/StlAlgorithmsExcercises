@@ -174,6 +174,28 @@ int main(int argc, char** args)
         While creating some in-place function escpecially the one that should be used in some STL algortihm the good choice is to create anonymous lambda function (in-place as algorithm's param or assinged to auto variable) but using such function in place may decrease the general readability.
      */
 
+    /*3b) Consider transforming a vector of integers into a set of integers. Only those elements whose absolute value
+    is strictly greater than a given threshold value should appear in the destination. An example is the vector
+    {1,2,1,4,5,5,-1}. If the threshold value is 2 then the output set will be {4,5}. Implement this problem using
+    the three bespoke methods above.*/
+
+    std::set<int> output3b;
+    std::vector<int> ex3b{1,2,1,4,5,5,-1};
+    constexpr int treshold = 0U;
+
+    std::copy_if(ex3b.begin(), ex3b.end(), std::inserter(output3b, output3b.begin()), [treshold](int input){
+        return input > treshold;
+    });
+
+    if(output3b.begin() != output3b.end())
+    {
+        std::cout << "The result of transforming vector {1,2,1,4,5,5,-1} which threshold value: " << std::to_string(treshold) << " is:\n";
+        for(auto el : output3b)
+        {
+            std::cout << std::to_string(el) << "\n";
+        }
+    }
+
     return 0;
 }
 
