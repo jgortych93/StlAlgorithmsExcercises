@@ -6,6 +6,24 @@
 //  Created by jgo on 22/10/2022.
 //
 
+template<typename T>
+class IsGreater
+{
+public:
+    IsGreater(const T& treshold)
+    {
+        this->treshold = treshold;
+    }
+
+    bool operator()(const T& element) const
+    {
+        return element > this->treshold;
+    }
+
+private:
+    T treshold;
+};
+
 #include <algorithm>
 #include <cstddef>
 #include <functional>
@@ -181,11 +199,20 @@ int main(int argc, char** args)
 
     std::set<int> output3b;
     std::vector<int> ex3b{1,2,1,4,5,5,-1};
-    constexpr int treshold = 0U;
+    constexpr int treshold = 4U;
 
-    std::copy_if(ex3b.begin(), ex3b.end(), std::inserter(output3b, output3b.begin()), [treshold](int input){
+    //lambda version
+    /*std::copy_if(ex3b.begin(), ex3b.end(), std::inserter(output3b, output3b.begin()), [treshold](int input){
         return input > treshold;
-    });
+    });*/
+
+    //User defined function object
+    /*IsGreater isGreater(treshold);
+    std::copy_if(ex3b.begin(), ex3b.end(), std::inserter(output3b, output3b.begin()), isGreater);*/
+
+    //Using predefined STL function
+    auto isGreaterThanTreshold = std::bind(std::greater(), std::placeholders::_1, treshold);
+    std::copy_if(ex3b.begin(), ex3b.end(), std::inserter(output3b, output3b.begin()), isGreaterThanTreshold);
 
     if(output3b.begin() != output3b.end())
     {
@@ -195,6 +222,7 @@ int main(int argc, char** args)
             std::cout << std::to_string(el) << "\n";
         }
     }
+
 
     return 0;
 }
